@@ -18,7 +18,7 @@
   color: var(--secondary-light);
   height: 20vh;
   width: 100%;
-  padding: 2rem;
+  padding: 0rem 2rem;
 }
 
 .float_button_container {
@@ -43,7 +43,7 @@
   width: 100%;
   padding: 0.5rem 0.5rem;
   height: 100%;
-  max-height: 8vh;
+  max-height: 5vh;
   border-top: 2px solid var(--shadow-color);
 }
 

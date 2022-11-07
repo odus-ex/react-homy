@@ -9,7 +9,7 @@ export const useNewAddressState = () => {
   const [listingDetails, setListingDetails] = useState({
     name: "",
     description: "",
-    type: "bunglow",
+    type: "",
     houseNumber: "",
     streetName: "",
     pincode: "",
@@ -224,10 +224,6 @@ export const useNewAddressState = () => {
 
   const handlePreviousStep = () => {
     setActiveView(activeView - 1);
-  };
-
-  const handleSubmit = () => {
-    console.log(listingDetails);
   };
 
   const handleListingSubmit = async () => {

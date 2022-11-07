@@ -1,5 +1,6 @@
-import Button from "../Button";
 import styles from "./addressCard.module.css";
+
+import Button from "../Button";
 
 const AddressCard = ({
   addressObject = {
@@ -14,7 +15,6 @@ const AddressCard = ({
     },
   },
   handleDelete = () => {},
-  // handleEdit = () => {},
 }) => {
   const { addressString, ameneties, name, price, type, floorplan, id } =
     addressObject;
@@ -32,7 +32,7 @@ const AddressCard = ({
         <span>{floorplan.baths} baths</span>
       </section>
       <section className={styles.ameneties_wrapper}>
-        {ameneties.length &&
+        {!!ameneties.length &&
           ameneties.map((amenity) => <span key={amenity}>{amenity}</span>)}
       </section>
       <section className={styles.user_action_container}>
@@ -41,11 +41,6 @@ const AddressCard = ({
           variant="secondary"
           onClick={() => handleDelete(id)}
         />
-        {/* <Button
-          label="edit"
-          variant="primary"
-          onClick={() => handleEdit(addressObject)}
-        /> */}
       </section>
     </div>
   );

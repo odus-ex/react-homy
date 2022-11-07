@@ -2,10 +2,9 @@ import styles from "./newListing.module.css";
 import { useNewAddressContext } from "../../contexts/NewAddress/NewAddressContext";
 
 import dynamic from "next/dynamic";
-
-import Button from "../../components/core/Button";
 import WithSuspense from "../../components/HOCs/WithSuspense";
 
+import Button from "../../components/core/Button";
 const AsyncAddressForm = dynamic(() => import("../../subViews/AddressForm"), {
   ssr: false,
 });
@@ -24,7 +23,6 @@ const NewListingView = () => {
     activeView,
     handleNextStep,
     handlePreviousStep,
-    doesFormHasErrors,
     handleDashboardNavigation,
   } = useNewAddressContext();
 
@@ -49,7 +47,7 @@ const NewListingView = () => {
   return (
     <div className={styles.view_contianer}>
       <section className={styles.welcome_heading_container}>
-        <h2>Create a new listing...</h2>
+        <h2>Create a new listing for your guests</h2>
         <div className={styles.float_button_container}>
           <Button
             label="Cancel"

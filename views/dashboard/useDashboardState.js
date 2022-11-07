@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { deleteDocument, getAllDocuments } from "../../controllers/firebase";
 import { getSearchResults } from "../../controllers/utils";
@@ -51,10 +51,6 @@ export const useDashboardState = () => {
     );
     setDeleteAddress(addressId);
   };
-
-  // const handleAdressEdit = (addresObject) => {
-  //   console.log("edit this", addresObject);
-  // };
 
   return {
     allAddresses,

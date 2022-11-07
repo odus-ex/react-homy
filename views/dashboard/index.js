@@ -1,5 +1,5 @@
-import { useDashboardState } from "./useDashboardState";
 import styles from "./dashboard.module.css";
+import { useDashboardState } from "./useDashboardState";
 
 import Button from "../../components/core/Button";
 import SearchInput from "../../components/core/SearchInput";
@@ -32,15 +32,9 @@ const DashboardView = () => {
           <SearchInput
             searchedTerm={searchedTerm}
             handleOnSearch={handleListingSearch}
-            placeholder="Search for name, type or address here.."
+            placeholder="Search name, address or ameneties of a listing here.."
           />
         </div>
-        <Button
-          label="create"
-          onClick={handleCreateNewListing}
-          variant="secondary"
-          loading={processDelete}
-        />
       </section>
       <section className={styles.listing_summary_container}>
         {loadingAddresses ? (
@@ -48,9 +42,15 @@ const DashboardView = () => {
         ) : (
           <h4>Welcome, you have {allAddresses.length} Listing(s)</h4>
         )}
+        <Button
+          label="create a new listing"
+          onClick={handleCreateNewListing}
+          variant="primary"
+          loading={processDelete}
+        />
       </section>
       <section className={styles.listing_container}>
-        {!loadingAddresses && allAddresses.length
+        {!loadingAddresses && allAddresses?.length
           ? allAddresses.map((addressObject) => (
               <AddressCard
                 key={addressObject.id}

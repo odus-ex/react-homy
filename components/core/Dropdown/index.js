@@ -24,7 +24,7 @@ const DropDown = ({
 }) => {
   return (
     <div className={styles.component_container}>
-      <h3>{heading}</h3>
+      <h4>{heading}</h4>
       <div className={styles.options_container}>
         {options.length ? (
           options.map((option) => (

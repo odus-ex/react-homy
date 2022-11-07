@@ -17,7 +17,7 @@ const PriceForm = () => {
 
   return (
     <div className={styles.component_container}>
-      <h2> Select a price for your listing</h2>
+      <h2> Finally, set a price for your listing</h2>
       <div className={styles.price_input_container}>
         <FormInput
           placeHolder="Enter a price for your listing"
@@ -32,6 +32,7 @@ const PriceForm = () => {
 
       <section className={styles.price_suggestion_container}>
         Rentals similar to this in your area has a price range of:
+        {/* suggest this dynamically through a service */}
         <h4>$300 to $400</h4>
       </section>
 

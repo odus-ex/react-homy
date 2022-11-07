@@ -4,13 +4,11 @@ import FormInput from "../../components/core/FormInput";
 import DropDown from "../../components/core/Dropdown";
 import { useNewAddressContext } from "../../contexts/NewAddress/NewAddressContext";
 import { useAddressFormState } from "./useAddressFormState";
-import Checkbox from "../../components/core/Checkbox";
 
 const AddressForm = () => {
   const { listingDetails, formErrors, handleInputChange, handleAddressSelect } =
     useNewAddressContext();
 
-  //refactor unecessary prop drill
   const { pincode, addressString } = listingDetails;
 
   const { suggestionList } = useAddressFormState();
@@ -18,10 +16,10 @@ const AddressForm = () => {
   return (
     <div className={styles.component_container}>
       <section className={styles.form_container}>
-        <h3>
+        <h2>
           Enter a valid postal code, then start typing your address to see a
           valid suggestion below
-        </h3>
+        </h2>
         <section className={styles.address_input_container}>
           <div className={styles.postal_input_wrapper}>
             <FormInput

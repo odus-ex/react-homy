@@ -25,13 +25,13 @@
 
 .address_suggestion_container {
   /* border: 2px solid red; */
-  height: 400px;
+  height: 20rem;
   display: flex;
 }
 
 .selected_address_container {
   display: flex;
-  min-height: 80px;
+  min-height: 5rem;
 }
 
 .address_support_container {

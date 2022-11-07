@@ -16,8 +16,6 @@
 }
 
 .user_action_container > .search_wrapper {
-  margin-right: 1rem;
-  /* border: 2px solid red; */
   width: 100%;
 }
 
@@ -25,6 +23,8 @@
   padding: 0 1rem;
   min-height: 1.5rem;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid var(--shadow-color);
 }
 

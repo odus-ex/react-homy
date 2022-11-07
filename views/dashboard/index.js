@@ -25,6 +25,8 @@ const DashboardView = () => {
     return <h1> Start creating a listing</h1>;
   };
 
+  console.log(allAddresses);
+
   return (
     <div className={styles.view_container}>
       <section className={styles.user_action_container}>

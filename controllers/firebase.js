@@ -1,9 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import {
   getFirestore,
   collection,
-  addDoc,
   getDocs,
   deleteDoc,
   doc,
@@ -19,27 +17,16 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FB_APP_ID,
 };
 
-//stop reinitialization on hot reload
 const app = initializeApp(firebaseConfig);
-const auth = getAuth();
 const database = getFirestore(app);
-
-//this should be async?
-export function intitateFBLogin(email, password) {
-  return signInWithEmailAndPassword(auth, email, password);
-}
 
 export async function createCollection(nameOfCollection) {
   return await collection(database, nameOfCollection);
 }
 
-// export async function addToCollection(collectionReference, jsonData) {
-//   return await addDoc(collectionReference, jsonData);
-// }
 export async function addToCollection(nameOfCollection, jsonData) {
   const docRef = doc(database, nameOfCollection, jsonData.id);
   return await setDoc(docRef, jsonData);
-  // return await addDoc(collectionReference, jsonData);
 }
 
 export async function getAllDocuments(nameOfCollection) {

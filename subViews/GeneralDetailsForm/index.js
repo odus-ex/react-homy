@@ -72,9 +72,6 @@ const GeneralDetailsForm = () => {
           errorLabel={formErrors.floorplan.baths}
         />
       </section>
-
-      {/* Remove this */}
-      {/* <button onClick={doesFormHasErrors}>OOooo</button> */}
     </div>
   );
 };

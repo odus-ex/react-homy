@@ -2,7 +2,7 @@ import styles from "./selector.module.css";
 
 const Selector = ({
   heading = "Select one or multiple option",
-  //one or multiple type depends on selectdOptions and onSelect implementation
+  //one or multiple type depends on selectdOptions and onOptionSelect implementation
   options = [
     {
       id: 1,

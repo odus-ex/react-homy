@@ -5,6 +5,12 @@ import { useDebounce } from "use-debounce";
 import { useRouter } from "next/router";
 
 export const useNewAddressState = () => {
+  const MAX_ROOMS = 10;
+  const MIN_ROOMS = 1;
+
+  const MAX_BATHS = 5;
+  const MIN_BATHS = 1;
+
   //states
   const [listingDetails, setListingDetails] = useState({
     name: "",
@@ -22,8 +28,8 @@ export const useNewAddressState = () => {
     price: "",
     ameneties: [],
     floorplan: {
-      rooms: 1,
-      baths: 1,
+      rooms: MIN_ROOMS,
+      baths: MIN_BATHS,
     },
   });
   const [activeView, setActiveView] = useState(0);
@@ -53,7 +59,7 @@ export const useNewAddressState = () => {
   );
   const [isAddressWashing, setIsAddressWashing] = useState(false);
   const [publishError, setPublishError] = useState("");
-  const [debouncedPincode] = useDebounce(listingDetails.pincode, 1000);
+  const [debouncedPincode] = useDebounce(listingDetails.pincode, 500);
   const router = useRouter();
 
   //form handlers
@@ -64,7 +70,7 @@ export const useNewAddressState = () => {
         ...formErrors,
         [e.target.name]: `${e.target.name} cannot be empty`,
       });
-    } else {
+    } else if (formErrors[e.target.name].length) {
       setFormErrors({
         ...formErrors,
         [e.target.name]: "",
@@ -104,7 +110,7 @@ export const useNewAddressState = () => {
     let floorPlanObject = listingDetails.floorplan;
 
     //maximim error
-    if (floorPlanObject.rooms === 10) {
+    if (floorPlanObject.rooms === MAX_ROOMS) {
       setFormErrors({
         ...formErrors,
         floorplan: {
@@ -129,7 +135,7 @@ export const useNewAddressState = () => {
   };
   const handleRoomsDecrement = () => {
     let floorPlanObject = listingDetails.floorplan;
-    if (floorPlanObject.rooms - 1 === 0) {
+    if (floorPlanObject.rooms - 1 === MIN_ROOMS - 1) {
       setFormErrors({
         ...formErrors,
         floorplan: {
@@ -155,7 +161,7 @@ export const useNewAddressState = () => {
 
   const handleBathsIncrement = () => {
     let floorPlanObject = listingDetails.floorplan;
-    if (floorPlanObject.baths === 5) {
+    if (floorPlanObject.baths === MAX_BATHS) {
       setFormErrors({
         ...formErrors,
         floorplan: {
@@ -181,7 +187,7 @@ export const useNewAddressState = () => {
 
   const handleBathsDecrement = () => {
     let floorPlanObject = listingDetails.floorplan;
-    if (floorPlanObject.baths - 1 === 0) {
+    if (floorPlanObject.baths - 1 === MIN_BATHS - 1) {
       setFormErrors({
         ...formErrors,
         floorplan: {
@@ -218,6 +224,27 @@ export const useNewAddressState = () => {
   };
 
   //view handlers
+  const doesFormHasErrors = () => {
+    let errorsStringArray = Object.values(formErrors).filter((errorString) => {
+      if (typeof errorString === "string") {
+        return errorString.length > 0;
+      }
+    });
+
+    if (errorsStringArray.length > 0) return true;
+
+    let uploadedValuesArray = Object.values(listingDetails).filter(
+      (valueString) => {
+        if (typeof valueString === "string") {
+          return valueString.length === 0;
+        }
+      }
+    );
+
+    if (uploadedValuesArray.length > 0) return true;
+
+    return false;
+  };
   const handleNextStep = () => {
     setActiveView(activeView + 1);
   };
@@ -244,28 +271,6 @@ export const useNewAddressState = () => {
     router.push("/");
   };
 
-  const doesFormHasErrors = () => {
-    let errorsStringArray = Object.values(formErrors).filter((errorString) => {
-      if (typeof errorString === "string") {
-        return errorString.length > 0;
-      }
-    });
-
-    if (errorsStringArray.length > 0) return true;
-
-    let uploadedValuesArray = Object.values(listingDetails).filter(
-      (valueString) => {
-        if (typeof valueString === "string") {
-          return valueString.length === 0;
-        }
-      }
-    );
-
-    if (uploadedValuesArray.length > 0) return true;
-
-    return false;
-  };
-
   return {
     activeView,
     listingDetails,
@@ -276,7 +281,6 @@ export const useNewAddressState = () => {
     debouncedPincode,
     isAddressWashing,
     publishError,
-    handleSubmit,
     handleAddressWashingSelector,
     handleRoomsIncrement,
     handleRoomsDecrement,

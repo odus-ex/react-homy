@@ -60,6 +60,5 @@ export const useDashboardState = () => {
     handleCreateNewListing,
     handleListingSearch,
     handleAddressDelete,
-    // handleAdressEdit,
   };
 };

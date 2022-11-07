@@ -1,0 +1,31 @@
+.component_container {
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  flex-direction: column;
+  height: 100%;
+}
+
+.price_input_container {
+  display: flex;
+  width: 60%;
+}
+
+.publishing_error_container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  padding: 1rem;
+  min-height: 5rem;
+  color: var(--error-red);
+}
+
+.price_suggestion_container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 1rem;
+}

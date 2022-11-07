@@ -1,0 +1,45 @@
+.component_container {
+  border: 2px solid var(--primary-dark);
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  min-width: 100px;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  height: fit-content;
+}
+
+.label_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  /* border: 2px solid red; */
+}
+
+.counter_wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.clicker {
+  cursor: pointer;
+}
+
+.clicker__disabled {
+  cursor: not-allowed;
+}
+
+.error_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+  width: 100%;
+  font-size: 0.75rem;
+  color: var(--error-red);
+}

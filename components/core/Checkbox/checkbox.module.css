@@ -1,0 +1,33 @@
+.component_container {
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.checkbox_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 0.25rem;
+  border: 2px solid var(--primary-dark);
+  cursor: pointer;
+}
+
+.checkbox_wrapper:hover {
+  border: 2px solid var(--secondary-light);
+}
+
+.checkbox_wrapper__selected {
+  background-color: var(--primary-dark);
+  padding: 5px;
+  color: white;
+}
+
+.checkbox_label {
+  margin: 0 0 0 0.75rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+}

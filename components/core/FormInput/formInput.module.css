@@ -1,0 +1,31 @@
+.component_container {
+  width: 100%;
+  border: 1px solid var(--primary-dark);
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+}
+
+.meta_data_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+}
+
+.meta_data_container > span {
+  margin-left: 0.75rem;
+  color: var(--error-red);
+  font-size: 0.75rem;
+}
+
+.component_container > input {
+  padding: 0.25rem;
+  width: 100%;
+  border: none;
+  outline: none;
+  margin-top: 0.5rem;
+}
+
+.component_container:focus-within {
+  border: 2px solid var(--secondary-dark);
+}

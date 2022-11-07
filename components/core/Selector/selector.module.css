@@ -1,0 +1,30 @@
+.component_container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  width: 100%;
+  padding: 1rem 0rem;
+  /* border: 2px solid blue; */
+}
+
+.options_container {
+  /* border: 2px solid green; */
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.option_wrapper {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  margin-right: 2rem;
+  margin-top: 1rem;
+  border: 1px solid var(--primary-dark);
+}
+
+.option_wrapper__selected {
+  background-color: var(--secondary-dark);
+  color: white;
+  border: none;
+}

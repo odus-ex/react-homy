@@ -18,3 +18,25 @@ export const getSearchResults = (allAddressesArray, searchedTerm) => {
     return searchedResults;
   }
 };
+
+export const doesFormHasErrors = (formErrors, listingDetails) => {
+  let errorsStringArray = Object.values(formErrors).filter((errorString) => {
+    if (typeof errorString === "string") {
+      return errorString.length > 0;
+    }
+  });
+
+  if (errorsStringArray.length > 0) return true;
+
+  let uploadedValuesArray = Object.values(listingDetails).filter(
+    (valueString) => {
+      if (typeof valueString === "string") {
+        return valueString.length === 0;
+      }
+    }
+  );
+
+  if (uploadedValuesArray.length > 0) return true;
+
+  return false;
+};

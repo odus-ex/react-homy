@@ -3,6 +3,7 @@ import { rentalTypes, ameneties } from "./assets";
 import { addToCollection } from "../../controllers/firebase";
 import { useDebounce } from "use-debounce";
 import { useRouter } from "next/router";
+import { doesFormHasErrors } from "../../controllers/utils";
 
 export const useNewAddressState = () => {
   const MAX_ROOMS = 10;
@@ -224,27 +225,27 @@ export const useNewAddressState = () => {
   };
 
   //view handlers
-  const doesFormHasErrors = () => {
-    let errorsStringArray = Object.values(formErrors).filter((errorString) => {
-      if (typeof errorString === "string") {
-        return errorString.length > 0;
-      }
-    });
+  // const doesFormHasErrors = () => {
+  //   let errorsStringArray = Object.values(formErrors).filter((errorString) => {
+  //     if (typeof errorString === "string") {
+  //       return errorString.length > 0;
+  //     }
+  //   });
 
-    if (errorsStringArray.length > 0) return true;
+  //   if (errorsStringArray.length > 0) return true;
 
-    let uploadedValuesArray = Object.values(listingDetails).filter(
-      (valueString) => {
-        if (typeof valueString === "string") {
-          return valueString.length === 0;
-        }
-      }
-    );
+  //   let uploadedValuesArray = Object.values(listingDetails).filter(
+  //     (valueString) => {
+  //       if (typeof valueString === "string") {
+  //         return valueString.length === 0;
+  //       }
+  //     }
+  //   );
 
-    if (uploadedValuesArray.length > 0) return true;
+  //   if (uploadedValuesArray.length > 0) return true;
 
-    return false;
-  };
+  //   return false;
+  // };
   const handleNextStep = () => {
     setActiveView(activeView + 1);
   };
@@ -254,7 +255,7 @@ export const useNewAddressState = () => {
   };
 
   const handleListingSubmit = async () => {
-    if (doesFormHasErrors()) {
+    if (doesFormHasErrors(formErrors, listingDetails)) {
       setPublishError(
         "Looks like you have some errors or unfinished data in your form. Please re-visit the listing and try publishing again"
       );
